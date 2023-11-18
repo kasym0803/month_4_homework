@@ -1,0 +1,15 @@
+{% extends 'layouts/index.html' %}
+
+{% block content %}
+<h1>
+    {% for post in posts %}
+        <div class="card" style="width: 18rem;">
+          <img src="..." class="card-img-top" alt="...">
+          <div class="card-body">
+            <p class="card-text">{{post.description}}</p>
+          </div>
+        </div>
+    {% endfor  %}
+</h1>
+{% endblock %}
+
