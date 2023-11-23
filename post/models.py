@@ -9,3 +9,7 @@ class Product(models.Model):
     release_data = models.DateField(auto_now_add=True)
 
 
+class Category(models.Model):
+    post = models.ForeignKey('post.Product', on_delete=models.CASCADE, related_name='category_related')
+    text = models.TextField()
+    release = models.DateField(auto_now_add=True)

@@ -1,0 +1,9 @@
+{% extends 'layouts/index.html' %}
+
+{% block content %}
+<h1>
+    {% for post in categories %}
+        <a href="#" class="categories">#{{ post.text }}</a>
+    {% endfor %}
+</h1>
+{% endblock %}
