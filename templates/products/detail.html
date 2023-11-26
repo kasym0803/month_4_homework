@@ -1,0 +1,29 @@
+{% extends 'layouts/index.html' %}
+
+{% block content %}
+
+<div class="card mb-3">
+  <img src="/media/{{ details.image }}" class="card-img-top h-50" alt="...">
+  <div class="card-body">
+    <h5 class="card-name">Name Product: {{details.name}}</h5>
+    <p class="card-text">Description: {{details.description}}</p>
+    <p class="card-category"> Category: {{details.category}}</p>
+    <p class="card-data"> Data Release: {{details.release_data}}</p>
+    {% for i in reviews %}
+        <p class="card-review">Review: {{i.text}}</p>
+    {% endfor %}
+  </div>
+</div>
+<!--</div>-->
+
+<!--    <p>-->
+<!--        {{details.name}}-->
+<!--        {{details.price}}-->
+<!--        {{details.description}}-->
+<!--        {{details.category}}-->
+<!--        {{details.release_data}}-->
+<!--    </p>-->
+<!--    -->
+<!--    <img src="/media/{{ details.image }}" width="400">-->
+
+{% endblock %}

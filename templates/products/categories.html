@@ -3,7 +3,9 @@
 {% block content %}
 <h1>
     {% for post in categories %}
-        <a href="#" class="categories">#{{ post.text }}</a>
+        <a href="#" class="categories">#{{ post.text }}
+                                        {{ post.release}}
+        </a>
     {% endfor %}
 </h1>
 {% endblock %}
