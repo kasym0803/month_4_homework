@@ -1,14 +1,71 @@
 {% extends 'layouts/index.html' %}
 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Title</title>
+    <link rel="stylesheet" href="css_file/create.css">
+</head>
+
 {% block content %}
 
-<h1>
-    Create a new
-</h1>
+<style>
+
+    .center {
+        text-align: center;
+        margin-top: 50px;
+    }
+
+    h1 {
+        color: #333;
+    }
+
+    form {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+
+    input, textarea, select {
+        background-color: transparent;
+        border: 1px solid #ccc;
+        padding: 8px;
+        margin-bottom: 10px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    button {
+        background-color: #000;
+        color: #ff8c00;
+        padding: 10px 15px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+</style>
+
+<div class="center">
+    <h1>Create a new</h1>
+
     <form action="" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{form.as_p}}
-        <button type="submit">submit</button>
+        <button type="submit">Submit</button>
     </form>
+</div>
+
+{#<h1>#}
+{#    Create a new#}
+{#</h1>#}
+{#    <form action="" method="post" enctype="multipart/form-data">#}
+{#        {% csrf_token %}#}
+{#        {{form.as_p}}#}
+{#        <button type="submit">submit</button>#}
+{#    </form>#}
 
 {% endblock %}

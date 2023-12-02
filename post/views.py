@@ -8,6 +8,7 @@ from post.forms import ProductCreateForm, CategoryCreateForm, ReviewCreateForm
 
 def main_view(request):
     if request.method == 'GET':
+        print(request.user)
         # print(posts.category_related.all())
         return render(request, 'layouts/index.html', {'title': 'Home'})
 
@@ -96,7 +97,8 @@ def review_products(request):
 
         return render(request, 'products/detail.html', context)
 
-        # return HttpResponse('Hello')
+
+    # return HttpResponse('Hello')
 #
 # def Date_view(request):
 #     current_date = datetime.now()

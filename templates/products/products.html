@@ -1,16 +1,38 @@
 {% extends 'layouts/index.html' %}
 
 {% block content %}
-    <h1>
-        {% for post in posts %}
-            <div class="card" style="width: 18rem;">
-              <img src="/media/{{ post.image }}" class="card-img-top" alt="...">
-              <div class="card-body">
-                <p class="card-text">{{post.name}}</p>
-                  <a href="/posts/{{ post.id }}/" class="btn btn-primary" style="background-color:#000000; color: #FF8C00">Read</a>
-              </div>
-            </div>
-        {% endfor %}
-    </h1>
+    <head>
+    <style>
+        .card {
+                margin-bottom: 20px;
+                margin-top: 30px/* Вы можете регулировать значение отступа по вашему усмотрению */
+            }
+        .card-container {
+            text-align: center;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+
+    </style>
+    </head>
+    <div class="card-container">
+        <h1>
+            {% for post in posts %}
+                <div class="card" style="width: 18rem;">
+                  <img src="/media/{{ post.image }}" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <p class="card-text">{{post.name}}</p>
+                      <a href="/posts/{{ post.id }}/" class="btn btn-primary" style="background-color:#000000; color: #FF8C00">Read</a>
+                  </div>
+                </div>
+            {% endfor %}
+        </h1>
+    </div>
 
 {% endblock %}
+
+
+
+
+

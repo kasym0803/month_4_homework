@@ -41,6 +41,7 @@ body {
     background-size: cover;
     /*background-position: center;*/
     background-repeat: no-repeat;
+    background-attachment: fixed;
     color: #ffffff;
     overflow-y: scroll;
 }
@@ -73,7 +74,21 @@ body {
           <a class="nav-link" href="/categories/">Category</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/posts/create/">Create</a>
+            {% if user.is_authenticated %}
+                <a class="nav-link" href="/posts/create/">Create</a>
+                <li>
+                    <a class="nav-link" href="/logout/">logaut</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="/profile/">Profile</a>
+                </li>
+            {% else  %}
+                <li class="nav-item">
+                    <a class="nav-link" href="/login/">login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/register/">Register</a>
+            {% endif %}
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
