@@ -19,6 +19,18 @@
             color: #ff8c00;
             font-family: Arial;
         }
+
+        .center-pagination {
+            display: flex;
+            justify-content: center;
+        }
+
+        .page-item.active .page-link {
+            color: #ff8c00;
+            background-color: #000;
+            border: 1px solid #000;
+        }
+
     </style>
     </head>
     <div class="card-container">
@@ -35,13 +47,29 @@
         </h1>
     </div>
 
-    <div>
-    <h2>
-        {% for page in pages %}
-        <a href="?page={{ page }}" methods="get">{{ page }}</a>
-        {% endfor %}
-    </h2>
+    <div class="center-pagination">
+  <ul class="pagination">
+    <li class="page-item disabled">
+{#      <a class="page-link" href="#">&laquo;</a>#}
+    </li>
+      {% for page in pages %}
+    <li class="page-item active">
+      <a class="page-link" href="?page={{ page }}" methods="get" _msttexthash="4459" _msthash="391">{{ page }}</a>
+    </li>
+      {% endfor %}
+    <li class="page-item">
+{#      <a class="page-link" href="#">&raquo;</a>#}
+    </li>
+  </ul>
     </div>
+
+{#    <div>#}
+{#    <h2>#}
+{#        {% for page in pages %}#}
+{#        <a href="?page={{ page }}" methods="get">{{ page }}</a>#}
+{#        {% endfor %}#}
+{#    </h2>#}
+{#    </div>#}
 {% endblock %}
 
 
