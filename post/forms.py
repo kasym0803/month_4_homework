@@ -11,6 +11,12 @@ class ProductCreateForm(forms.Form):
     description = forms.CharField(widget=forms.Textarea())
 
 
+class ProductCreateForm2(forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = ['name', 'price', 'category', 'description']
+
+
 class CategoryCreateForm(forms.Form):
     text = forms.CharField(max_length=60)
 

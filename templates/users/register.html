@@ -1,6 +1,41 @@
 {% extends 'layouts/index.html' %}
 
 {% block content %}
+
+<style>
+        .center {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        input, textarea, select {
+            background-color: transparent;
+            border: 1px solid #ccc;
+            padding: 8px;
+            margin-bottom: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #000;
+            color: #ff8c00;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+</style>
+<div class="center">
     <h1>
         Register
     </h1>
@@ -10,5 +45,5 @@
         {{ form.as_p }}
     <button type="submit">Register</button>
     </form>
-
+</div>
 {% endblock %}

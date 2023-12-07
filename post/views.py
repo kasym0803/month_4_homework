@@ -1,6 +1,7 @@
 from django.shortcuts import (HttpResponse, render, redirect)
 from post.models import Product, Category, Review
-from post.forms import ProductCreateForm, CategoryCreateForm, ReviewCreateForm
+from post.forms import ProductCreateForm, CategoryCreateForm, ReviewCreateForm, ProductCreateForm2
+from django.conf import settings
 
 
 # from datetime import datetime
@@ -16,7 +17,27 @@ def main_view(request):
 def products_view(request):
     if request.method == 'GET':
         post = Product.objects.all()
-        return render(request, 'products/products.html', context={'posts': post, 'title': 'Product'})
+
+        search = request.GET.get('search')
+        print(search)
+
+        if search:
+            post = post.filter(name__icontains=search)
+
+        max_page = post.count() / settings.PAGE_SIZE
+
+        if round(max_page) < max_page:
+            max_page = round(max_page) + 1
+        else:
+            max_page = round(max_page)
+
+        page = int(request.GET.get('page', 1))
+        start = (page - 1) * settings.PAGE_SIZE
+        end = page * settings.PAGE_SIZE
+        post = post[start:end]
+
+        return render(request, 'products/products.html',
+                      context={'posts': post, 'pages': range(1, max_page + 1), 'title': 'Product'})
 
 
 def category_view(request):
@@ -98,8 +119,23 @@ def review_products(request):
         return render(request, 'products/detail.html', context)
 
 
-    # return HttpResponse('Hello')
-#
+def update_view(request, product_id):
+    try:
+        post = Product.objects.get(id=product_id)
+    except Product.DoesNotExist:
+        return render(request, 'errors/404.html')
+    if request.method == 'GET':
+        form = ProductCreateForm2(instance=post)
+        context = {'form': form}
+        return render(request, 'products/update.html', context)
+    if request.method == 'POST':
+        form = ProductCreateForm2(request.POST, request.FILES, instance=post)
+        if form.is_valid():
+            form.save()
+            return redirect(f'/posts/{product_id}/')
+        # return HttpResponse('Hello')
+        return render(request, 'products/detail.html', {'form': form})
+
 # def Date_view(request):
 #     current_date = datetime.now()
 #     format_date = current_date.strftime('%Y-%m-%d')

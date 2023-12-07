@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+
 from users.forms import RegisterForm, LoginForm
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
@@ -48,3 +49,6 @@ def logaut_view(request):
 def profile_view(request):
     if request.method == 'GET':
         return render(request, 'users/profile.html', {'user': request.user})
+
+
+

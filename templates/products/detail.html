@@ -3,7 +3,6 @@
 {% block content %}
     <head>
         <title>{{ title }}</title>
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
     <style>
         .btn {
         background-color: #000;
@@ -31,9 +30,9 @@
             <form action="" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ form.as_p }}
-                <button type="submit" class="btn">submit</button>
+                <button type="submit" class="btn"><i class="fa-regular fa-download"></i>submit</button>
             </form>
-            <a href="/products/" class="btn btn-primary" style="background-color:#000000; color: #FF8C00">Back</a>
+            <a href="/products/" class="btn btn-primary" style="background-color:#000000; color: #FF8C00"><i class="fa-solid fa-arrow-left"></i> Back</a>
         </div>
     </div>
 
